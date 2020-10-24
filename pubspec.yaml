@@ -51,6 +51,8 @@ flutter:
       - assets/images/figther.jpg
       - assets/images/ranchu.jpg
       - assets/images/bg.jpg
+      - assets/images/fish.svg
+      - assets/images/fishout.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
