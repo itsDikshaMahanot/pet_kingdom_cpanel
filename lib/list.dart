@@ -19,7 +19,8 @@ class TagList extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(50),
-                    bottomRight: Radius.circular(50))),
+                    bottomRight: Radius.circular(50))
+                    ),
             child: Row(
               children: [
                 SizedBox(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_kingdom_cpanel/insert_screen.dart';
+import 'package:pet_kingdom_cpanel/screen2.dart';
 
 class Cardlist extends StatelessWidget {
   const Cardlist({Key key}) : super(key: key);
@@ -44,7 +45,7 @@ class Cardlist extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => InsertScreen(),)
+                        MaterialPageRoute(builder: (context) => Screen2(),)
                       );
                     },
                     child: Card(

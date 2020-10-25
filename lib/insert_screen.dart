@@ -14,7 +14,7 @@ class InsertScreen extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(top: 150),
                 child: GridView.count(
-                  crossAxisCount: 2,
+                  crossAxisCount: 4,
                   primary: false,
                   mainAxisSpacing: 40,
                   crossAxisSpacing: 10,
@@ -25,8 +25,8 @@ class InsertScreen extends StatelessWidget {
                         children: [
                           Image.network(
                             "https://cdn.onlinewebfonts.com/svg/img_498109.png",
-                            height: 150,
-                            width: 180,
+                            height: 50,
+                            width: 50,
                           ),
                           Text(
                             "Fish",
@@ -47,9 +47,9 @@ class InsertScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Image.network(
-                            "https://www.vhv.rs/viewpic/hxJbRJJ_dog-vector-dog-png-vector-transparent-png",
-                            height: 150,
-                            width: 180,
+                            "https://cdn.onlinewebfonts.com/svg/img_498109.png",
+                            height: 50,
+                            width: 50,
                           ),
                           Text(
                             "Dog",
@@ -71,8 +71,8 @@ class InsertScreen extends StatelessWidget {
                         children: [
                           Image.network(
                             "https://cdn.onlinewebfonts.com/svg/img_498109.png",
-                            height: 150,
-                            width: 180,
+                            height: 50,
+                            width: 50,
                           ),
                           Text(
                             "Bird",
@@ -94,8 +94,8 @@ class InsertScreen extends StatelessWidget {
                         children: [
                           Image.network(
                             "https://cdn.onlinewebfonts.com/svg/img_498109.png",
-                            height: 150,
-                            width: 180,
+                            height: 50,
+                            width: 50,
                           ),
                           Text(
                             "Plants",
@@ -110,7 +110,11 @@ class InsertScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10)
                       ),
                        elevation: 5,
-                    )
+                    ),
+
+
+
+                    
                   ],
                 ),
               ),
