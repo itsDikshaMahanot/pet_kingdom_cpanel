@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_kingdom_cpanel/insert_screen.dart';
-import 'package:pet_kingdom_cpanel/screen2.dart';
+import 'package:pet_kingdom_cpanel/home_screen.dart';
 
 class Cardlist extends StatelessWidget {
   const Cardlist({Key key}) : super(key: key);
@@ -43,11 +43,7 @@ class Cardlist extends StatelessWidget {
                 crossAxisCount: 2,
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Screen2(),)
-                      );
-                    },
+                    onTap: () {},
                     child: Card(
                       margin: EdgeInsets.all(20),
                       child: Column(
@@ -59,6 +55,62 @@ class Cardlist extends StatelessWidget {
                           ),
                           Text(
                             "Insert",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Card(
+                      margin: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            'https://cdn.iconscout.com/icon/premium/png-256-thumb/insert-39-291884.png',
+                            height: 120,
+                          ),
+                          Text(
+                            "Update",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ));
+                    },
+                    child: Card(
+                      margin: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            'https://cdn.iconscout.com/icon/premium/png-256-thumb/insert-39-291884.png',
+                            height: 120,
+                          ),
+                          Text(
+                            "Delete",
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,

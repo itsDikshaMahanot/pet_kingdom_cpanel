@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_kingdom_cpanel/cardlist.dart';
 
+import 'home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Cardlist()
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("PET KINGDOM ADMIN"),
+        ),
+        backgroundColor: Colors.grey[200],
+        body: HomeScreen(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
+      ),
     );
   }
 }
