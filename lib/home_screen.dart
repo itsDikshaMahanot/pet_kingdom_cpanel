@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:pet_kingdom_cpanel/fish_species.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -66,20 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           enabledBorder: InputBorder.none,
                         )),
-                    TextField(
-                        style: TextStyle(color: Colors.black, fontSize: 22),
-                        onChanged: (value) {
-                          print(value);
-                        },
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          hintText: "Search...",
-                          hintStyle: TextStyle(
-                            color: Colors.black26,
-                            fontSize: 22,
-                          ),
-                          enabledBorder: InputBorder.none,
-                        )),
                   ],
                 ),
               ),
@@ -109,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text("PET KINGDOM ADMIN"),
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[300],
       body: Home(size),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -151,12 +138,19 @@ Widget Home(var size) {
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 8.0, top: 8.0),
-                  child: Card(
-                    elevation: 5,
-                    child: Container(
-                        color: Colors.yellow,
-                        width: 150,
-                        child: Icon(drawerItems[index]['icon'])),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => FishSpecies(),
+                      ));
+                    },
+                    child: Card(
+                      elevation: 5,
+                      child: Container(
+                          color: Colors.yellow,
+                          width: 150,
+                          child: Icon(drawerItems[index]['icon'])),
+                    ),
                   ),
                 );
               },
