@@ -141,7 +141,7 @@ Widget Home(var size) {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => FishSpecies(),
+                        builder: (context) => Fishspecies(),
                       ));
                     },
                     child: Card(

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class HomeScreen_One extends StatefulWidget {
@@ -5,11 +6,21 @@ class HomeScreen_One extends StatefulWidget {
   _HomeScreen_OneState createState() => _HomeScreen_OneState();
 }
 
-List<Map> icons = [
-  {'assets': ('assets/images/bg.jpg')},
-  {'assets': ('assets/images/ranchu.jpg')}
+List<Map> imageIcons = [
+  {'assets': 'assets/images/bg.jpg'},
+  {'assets': 'assets/images/ranchu.jpg'},
+  {'assets': 'assets/images/figther.jpg'},
+  {'assets': 'assets/images/figther.jpg'},
+];
+List<Map> drawerItems = [
+  {'icon': Icons.ad_units, 'title': 'Profile'},
+  {'icon': Icons.mail, 'title': 'About Us'},
+  {'icon': Icons.favorite, 'title': 'Favourite'},
+  {'icon': Icons.dangerous, 'title': 'Messgaes'},
 ];
 
+/// making new dialog box from + button sign////
+///
 class _HomeScreen_OneState extends State<HomeScreen_One> {
   void showDialog() {
     showGeneralDialog(
@@ -63,7 +74,7 @@ class _HomeScreen_OneState extends State<HomeScreen_One> {
                 ),
               ),
             )),
-            margin: EdgeInsets.only(bottom: 250, left: 12, right: 12),
+            margin: EdgeInsets.only(bottom: 350, left: 12, right: 12),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(40),
@@ -116,37 +127,190 @@ Widget Home(var size) {
                           image: AssetImage('assets/images/bg.jpg'),
                           fit: BoxFit.cover),
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(40),
-                          bottomRight: Radius.circular(40)))),
+                          bottomLeft: Radius.circular(50),
+                          bottomRight: Radius.circular(50)))),
               Container(
                   margin: EdgeInsets.only(
-                    top: 210,
-                    left: 10,
-                    right: 10,
+                    top: 160,
+                    left: 5,
+                    right: 5,
                   ),
-                  height: 100,
+                  height: 105,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 8,
+                    itemCount: drawerItems.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
-                        padding: const EdgeInsets.all(1),
-                        // child: InkWell(
-                        //   onTap: () {
-                        //     Navigator.of(context).push(MaterialPageRoute(
-                        //       builder: (context) => FishSpecies(),
-                        //     ));
-                        //   },
-                        child: Card(
-                          elevation: 5,
-                          child: Container(
-                            color: Colors.grey[400],
-                            width: 100,
-                          ),
-                        ),
-                      );
+                          padding: const EdgeInsets.all(1),
+                          child: GestureDetector(
+                              onTap: () {
+                                showGeneralDialog(
+                                    barrierDismissible: true,
+                                    barrierLabel:
+                                        MaterialLocalizations.of(context)
+                                            .modalBarrierDismissLabel,
+                                    barrierColor: Colors.lightBlue[50],
+                                    transitionDuration:
+                                        Duration(milliseconds: 700),
+                                    context: context,
+                                    pageBuilder: (BuildContext context,
+                                        Animation first, Animation second) {
+                                      return Center(
+                                        child: Material(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  Colors.lightGreenAccent[100],
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width -
+                                                20,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height -
+                                                60,
+                                            padding: EdgeInsets.all(15.0),
+                                            child: Column(
+                                              children: [
+                                                TextField(
+                                                    autofocus: false,
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    decoration: InputDecoration(
+                                                      hintText:
+                                                          "Enter the Category Name like goldfish,etc...",
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black26,
+                                                        fontSize: 22,
+                                                      ),
+                                                    )),
+                                                TextField(
+                                                    autofocus: false,
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    decoration: InputDecoration(
+                                                      hintText:
+                                                          "Enter the Breed Name like tiger Oscar...",
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black26,
+                                                        fontSize: 22,
+                                                      ),
+                                                    )),
+                                                TextField(
+                                                    autofocus: false,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText:
+                                                          "Enter the BreedAge",
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black26,
+                                                        fontSize: 22,
+                                                      ),
+                                                    )),
+                                                TextField(
+                                                    autofocus: false,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText:
+                                                          "Enter the image for Breedimage..URL",
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black26,
+                                                        fontSize: 22,
+                                                      ),
+                                                    )),
+                                                TextField(
+                                                    autofocus: false,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText:
+                                                          "Enter the breedSize",
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black26,
+                                                        fontSize: 22,
+                                                      ),
+                                                    )),
+                                                TextField(
+                                                    autofocus: false,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText: "Compatibility",
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black26,
+                                                        fontSize: 22,
+                                                      ),
+                                                    )),
+                                                TextField(
+                                                    autofocus: false,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText: "Native place",
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black26,
+                                                        fontSize: 22,
+                                                      ),
+                                                    )),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      10.0),
+                                                  child: RaisedButton(
+                                                    onPressed: () {
+                                                      print("Button clicked");
+                                                    },
+                                                    child: Text("Add"),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    transitionBuilder: (context, animation,
+                                        secondaryAnimation, child) {
+                                      return SlideTransition(
+                                        position: Tween(
+                                                begin: Offset(0, 3),
+                                                end: Offset(0, 0))
+                                            .animate(animation),
+                                        child: child,
+                                      );
+                                    });
+                              },
+                              child: Card(
+                                elevation: 5,
+                                color: Colors.black,
+                                child: Container(
+                                  width: 110,
+                                  child: Image(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          imageIcons[index]['assets'])),
+                                ),
+                              )));
                     },
                   )),
+              Column(
+                children: [
+                  SizedBox(height: 320),
+                  Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      height: 150,
+                      child: Card(
+                        elevation: 5,
+                        child: Container(
+                          color: Colors.grey,
+                        ),
+                      )),
+                ],
+              )
             ],
           ),
         ],

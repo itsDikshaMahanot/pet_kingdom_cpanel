@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pet_kingdom_cpanel/cardlist.dart';
+import 'package:pet_kingdom_cpanel/fish_species.dart';
+import 'package:pet_kingdom_cpanel/home_screen.dart';
+
 import 'package:pet_kingdom_cpanel/homescreen1.dart';
 
 void main() {
