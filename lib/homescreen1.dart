@@ -1,5 +1,8 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class HomeScreen_One extends StatefulWidget {
   @override
@@ -7,7 +10,7 @@ class HomeScreen_One extends StatefulWidget {
 }
 
 List<Map> imageIcons = [
-  {'assets': 'assets/images/bg.jpg'},
+  {'assets': 'assets/images/Oscar-Fish.jpg'},
   {'assets': 'assets/images/ranchu.jpg'},
   {'assets': 'assets/images/figther.jpg'},
   {'assets': 'assets/images/figther.jpg'},
@@ -22,6 +25,22 @@ List<Map> drawerItems = [
 /// making new dialog box from + button sign////
 ///
 class _HomeScreen_OneState extends State<HomeScreen_One> {
+  File _image;
+  final picker = ImagePicker();
+  Future getImage() async {
+    final image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = image;
+      print(_image);
+    });
+  }
+
+  Future uploadPic(BuildContext context) async {
+    String filename = _image.path; //basename(_image.path)//
+    DatabaseReference databaseReference =
+        FirebaseDatabase.instance.reference().child(filename).push();
+  }
+
   void showDialog() {
     showGeneralDialog(
       barrierLabel: "Barrier",
@@ -30,50 +49,138 @@ class _HomeScreen_OneState extends State<HomeScreen_One> {
       transitionDuration: Duration(milliseconds: 300),
       context: context,
       pageBuilder: (_, __, ___) {
-        return Align(
-          alignment: Alignment.bottomCenter,
+        return SingleChildScrollView(
           child: Container(
-            height: 300,
-            child: SizedBox.expand(
-                child: Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Material(
-                child: Column(
-                  children: [
-                    TextField(
-                      style: TextStyle(color: Colors.black, fontSize: 22),
-                      onChanged: (value) {
-                        print(value);
-                      },
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: "Reference...",
-                        hintStyle: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 22,
+            height: MediaQuery.of(context).size.height - 0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Material(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 40.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Align(
+                                alignment: Alignment.center,
+                                child: CircleAvatar(
+                                    radius: 100,
+                                    backgroundColor: Colors.greenAccent,
+                                    child: ClipOval(
+                                      child: SizedBox(
+                                        width: 180.0,
+                                        height: 180.0,
+                                        child: (_image != null)
+                                            ? Image.file(
+                                                _image,
+                                                fit: BoxFit.fill,
+                                              )
+                                            : Image.network(
+                                                "https://www.trendingus.com/wp-content/uploads/2020/01/a04e4e5ebee1b7d1d4bf8db62107c38b.jpg",
+                                                fit: BoxFit.fill),
+                                      ),
+                                    )),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 60.0, left: 10.0),
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.add_a_photo_rounded,
+                                    size: 40.0,
+                                  ),
+                                  onPressed: () {
+                                    getImage();
+                                  },
+                                ),
+                              )
+                            ]),
+                        SizedBox(
+                          height: 30.0,
                         ),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                      ),
-                    ),
-                    TextField(
-                        style: TextStyle(color: Colors.black, fontSize: 22),
-                        onChanged: (value) {
-                          print(value);
-                        },
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          hintText: "Species_Name...",
-                          hintStyle: TextStyle(
-                            color: Colors.black26,
-                            fontSize: 22,
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "Image Name",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(height: 20.0),
+                        TextField(
+                          style: TextStyle(color: Colors.black, fontSize: 22),
+                          onChanged: (value) {
+                            print(value);
+                          },
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            hintText: "Category Name",
+                            hintStyle: TextStyle(
+                              color: Colors.black26,
+                              fontSize: 22,
+                            ),
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
                           ),
-                          enabledBorder: InputBorder.none,
-                        )),
-                  ],
+                        ),
+                        TextField(
+                          style: TextStyle(color: Colors.black, fontSize: 22),
+                          onChanged: (value) {
+                            print(value);
+                          },
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            hintText: "Species Name",
+                            hintStyle: TextStyle(
+                              color: Colors.black26,
+                              fontSize: 22,
+                            ),
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                        SizedBox(height: 30.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            RaisedButton(
+                              textColor: Colors.blueAccent,
+                              onPressed: () {
+                                // uploadPic(context);
+                              },
+                              child: Text(
+                                "Add New",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ),
+                            RaisedButton(
+                              textColor: Colors.blueAccent,
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                "Cancel",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            )),
+              ],
+            ),
             margin: EdgeInsets.only(bottom: 350, left: 12, right: 12),
             decoration: BoxDecoration(
               color: Colors.white,

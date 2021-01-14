@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "561805786017",
-    "project_id": "admin-app-da1c9",
-    "storage_bucket": "admin-app-da1c9.appspot.com"
+    "project_number": "808933504067",
+    "project_id": "animopedia-admin",
+    "storage_bucket": "animopedia-admin.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:561805786017:android:86930f62badc145ef8e9e0",
+        "mobilesdk_app_id": "1:808933504067:android:dec0fb27ebac9d838d10f6",
         "android_client_info": {
           "package_name": "com.example.pet_kingdom_cpanel"
         }
       },
       "oauth_client": [
         {
-          "client_id": "561805786017-f26g3lnm41fg1semrm751kf1645mn083.apps.googleusercontent.com",
+          "client_id": "808933504067-649vss9peti3ttbbv39cteon3c2tcqe7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDISr2cd3b1I6n6bgbd20Bn3bDibnp4ypY"
+          "current_key": "AIzaSyDSpOVm_iR-ieWbTkEj5SzEnEm-xHDrH1M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "561805786017-f26g3lnm41fg1semrm751kf1645mn083.apps.googleusercontent.com",
+              "client_id": "808933504067-649vss9peti3ttbbv39cteon3c2tcqe7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
